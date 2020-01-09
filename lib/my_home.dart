@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_reorderable_list/flutter_reorderable_list.dart';
+import 'package:flutter_text0108/reorderable_list.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -73,6 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      // 에러 - ReorderableList
       body: ReorderableList(
         onReorder: this._reorderCallback,
         onReorderDone: this._reorderDone,
@@ -147,6 +148,7 @@ class Item extends StatelessWidget {
   final bool isLast;
   final DraggingMode draggingMode;
 
+  // 에러 - ReorderableItemState
   Widget _buildChild(BuildContext context, ReorderableItemState state) {
     BoxDecoration decoration;
 
@@ -170,6 +172,7 @@ class Item extends StatelessWidget {
     // For iOS dragging mdoe, there will be drag handle on the right that triggers
     // reordering; For android mode it will be just an empty container
     Widget dragHandle = draggingMode == DraggingMode.iOS
+                        // 에러 - ReorderableListener
                         ? ReorderableListener(
       child: Container(
         padding: EdgeInsets.only(right: 18.0, left: 18.0),
@@ -210,6 +213,7 @@ class Item extends StatelessWidget {
 
     // For android dragging mode, wrap the entire content in DelayedReorderableListener
     if (draggingMode == DraggingMode.Android) {
+      // 에러 - DelayedReorderableListener
       content = DelayedReorderableListener(
         child: content,
       );
@@ -220,6 +224,7 @@ class Item extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 에러 - ReorderableItem
     return ReorderableItem(
         key: data.key, //
         childBuilder: _buildChild);
